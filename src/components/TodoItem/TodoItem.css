@@ -1,11 +1,16 @@
 .todo-item {
-  border: 3px solid black;
+  border: 2px solid black;
   border-radius: 5px;
   padding: 10px 20px;
   margin: 10px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.todo-item__edit {
+  font-size: 16pt;
+  width: 100%;
 }
 
 .todo-item__btn-wrap {

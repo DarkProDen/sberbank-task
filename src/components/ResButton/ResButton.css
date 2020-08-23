@@ -1,0 +1,9 @@
+.res-btn {
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+}
+
+.res-btn__img {
+  height: 100%;
+}
