@@ -2,10 +2,10 @@ import React from 'react';
 import './CheckButton.css';
 import checkImg from '../../img/check-solid.svg';
 
-function CheckButton() {
+function CheckButton({ onClick }) {
   return (
-    <button className="check-btn" title="Завершить">
-      <img src={checkImg}></img>
+    <button className="check-btn" title="Завершить" onClick={onClick}>
+      <img src={checkImg} />
     </button>
   );
 }

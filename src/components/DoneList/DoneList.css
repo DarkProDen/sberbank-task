@@ -1,3 +1,6 @@
 .done-list {
-  width: 100%;
+  margin: 0 40px;
+  margin-top: 10px;
+  color: gray;
+  text-align: center;
 }

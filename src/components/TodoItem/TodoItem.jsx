@@ -14,6 +14,13 @@ function TodoItem({ todoItem, updateItem, removeItem }) {
     setEdit(false);
   };
 
+  const doneEventHandler = () => {
+    const newItem = Object.assign({}, todoItem);
+
+    newItem.done = true;
+    updateItem(todoItem.id, newItem);
+  };
+
   return (
     <div className="todo-item">
       {edit ? (
@@ -33,7 +40,7 @@ function TodoItem({ todoItem, updateItem, removeItem }) {
         todoItem.title
       )}
       <div className="todo-item__btn-wrap">
-        <CheckButton />
+        <CheckButton onClick={doneEventHandler} />
         <EditButton
           onClick={() => {
             setEdit(true);
