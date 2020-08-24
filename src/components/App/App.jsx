@@ -4,26 +4,34 @@ import TodoList from '../TodoList/TodoList';
 import DoneList from '../DoneList/DoneList';
 import Separator from '../Separator/Separator';
 import NewTodoItem from '../NewTodoItem/NewTodoItem';
+import BackendService from '../../BackendService';
+
+const backendService = new BackendService();
 
 function App() {
-  const [todoItems, setTodoItems] = useState([
-    { title: 'title1', id: 0 },
-    { title: 'title2 fsdhsldfs lhfsdklsd fsdhkfs fksjdgfk uwehw ud wod', id: 1 },
-    { title: 'done', id: 2, done: true },
-  ]);
+  const [todoItems, setTodoItems] = useState(backendService.getTodoList());
 
   const addNewItem = (newItem) => {
     newItem.id = todoItems.length > 0 ? todoItems[todoItems.length - 1].id + 1 : 0;
 
-    setTodoItems([...todoItems, newItem]);
+    const newTodoItems = [...todoItems, newItem];
+
+    backendService.setTodoList(newTodoItems);
+    setTodoItems(newTodoItems);
   };
 
   const updateItem = (id, newItem) => {
-    setTodoItems(todoItems.map((item) => (item.id === id ? newItem : item)));
+    const newTodoItems = todoItems.map((item) => (item.id === id ? newItem : item));
+
+    backendService.setTodoList(newTodoItems);
+    setTodoItems(newTodoItems);
   };
 
   const removeItem = (id) => {
-    setTodoItems(todoItems.filter((item) => item.id !== id));
+    const newTodoItems = todoItems.filter((item) => item.id !== id);
+
+    backendService.setTodoList(newTodoItems);
+    setTodoItems(newTodoItems);
   };
 
   return (
