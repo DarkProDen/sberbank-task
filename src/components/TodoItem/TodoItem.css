@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  text-align: start;
+  text-align: left;
 }
 
 .todo-item:last-child {
