@@ -6,11 +6,14 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 
 function TodoItem({ todoItem, updateItem, removeItem }) {
   const [edit, setEdit] = useState(false);
+  const [style, setStyle] = useState(null);
+  const todoItemRef = React.createRef();
 
   const updateItemHandler = (e) => {
     const title = e.target.value;
 
     updateItem(todoItem.id, { id: todoItem.id, title, done: todoItem.done });
+    setStyle(null);
     setEdit(false);
   };
 
@@ -22,16 +25,15 @@ function TodoItem({ todoItem, updateItem, removeItem }) {
   };
 
   return (
-    <div className="todo-item">
+    <div ref={todoItemRef} className="todo-item" style={style}>
       {edit ? (
-        <input
+        <textarea
           autoFocus
           className="todo-item__edit"
-          type="text"
           onBlur={updateItemHandler}
-          onKeyPress={(e) => {
-            if (e.key === 'Enter') {
-              updateItemHandler({ target: e.target });
+          onKeyPress={({ target, key }) => {
+            if (key === 'Enter') {
+              updateItemHandler({ target });
             }
           }}
           defaultValue={todoItem.title}
@@ -43,6 +45,10 @@ function TodoItem({ todoItem, updateItem, removeItem }) {
         <CheckButton onClick={doneEventHandler} />
         <EditButton
           onClick={() => {
+            setStyle({
+              width: `${todoItemRef.current.clientWidth - 40}px`,
+              height: `${todoItemRef.current.clientHeight - 20}px`,
+            });
             setEdit(true);
           }}
         />

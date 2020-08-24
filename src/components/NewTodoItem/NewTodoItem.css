@@ -9,6 +9,7 @@
   font-size: 16pt;
   background-color: initial;
   margin: 0 40px;
+  line-height: 31px;
 }
 
 .new-todo-item__input {
