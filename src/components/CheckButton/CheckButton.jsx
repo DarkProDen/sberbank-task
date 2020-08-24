@@ -5,7 +5,7 @@ import checkImg from '../../img/check-solid.svg';
 function CheckButton({ onClick }) {
   return (
     <button className="check-btn" title="Завершить" onClick={onClick}>
-      <img src={checkImg} />
+      <img src={checkImg} alt="Завершить" />
     </button>
   );
 }
