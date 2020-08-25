@@ -3,16 +3,18 @@ import './DoneItem.css';
 import ResButton from '../ResButton/ResButton';
 
 function DoneItem({ doneItem, updateItem }) {
+  const { id, title } = doneItem;
+
   const resEventHandler = () => {
     const newItem = Object.assign({}, doneItem);
 
     newItem.done = false;
-    updateItem(doneItem.id, newItem);
+    updateItem(id, newItem);
   };
 
   return (
     <div className="done-item">
-      {doneItem.title}
+      {title}
       <ResButton onClick={resEventHandler} />
     </div>
   );

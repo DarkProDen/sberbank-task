@@ -8,11 +8,10 @@ function TodoItem({ todoItem, updateItem, removeItem }) {
   const [edit, setEdit] = useState(false);
   const [style, setStyle] = useState(null);
   const todoItemRef = React.createRef();
+  const { id, title, done } = todoItem;
 
   const updateItemHandler = (e) => {
-    const title = e.target.value;
-
-    updateItem(todoItem.id, { id: todoItem.id, title, done: todoItem.done });
+    updateItem(id, { id, title: e.target.value, done });
     setStyle(null);
     setEdit(false);
   };
@@ -36,10 +35,10 @@ function TodoItem({ todoItem, updateItem, removeItem }) {
               updateItemHandler({ target });
             }
           }}
-          defaultValue={todoItem.title}
+          defaultValue={title}
         />
       ) : (
-        todoItem.title
+        title
       )}
       <div className="todo-item__btn-wrap">
         <CheckButton onClick={doneEventHandler} />
@@ -54,7 +53,7 @@ function TodoItem({ todoItem, updateItem, removeItem }) {
         />
         <DeleteButton
           onClick={() => {
-            removeItem(todoItem.id);
+            removeItem(id);
           }}
         />
       </div>

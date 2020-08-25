@@ -38,12 +38,12 @@ function App() {
     <div className="app">
       <NewTodoItem addNewItem={addNewItem} />
       <TodoList
-        todoItems={todoItems.filter((todoItem) => !todoItem.done)}
+        todoItems={todoItems.filter(({ done }) => !done)}
         updateItem={updateItem}
         removeItem={removeItem}
       />
       <Separator />
-      <DoneList doneItems={todoItems.filter((todoItem) => todoItem.done)} updateItem={updateItem} />
+      <DoneList doneItems={todoItems.filter(({ done }) => done)} updateItem={updateItem} />
     </div>
   );
 }
